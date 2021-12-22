@@ -14,10 +14,25 @@ const swiper1 = new Swiper('.rooms__item', {
 const swiper2 = new Swiper('.gallery__items-swiper', {
     loop: true,
     direction: 'horizontal',
-    slidesPerView: 3,
+    slidesPerView: 1,
     // autoHeight: true,
-    spaceBetween: 30,
-    
+    spaceBetween: 10,
+    breakpoints: {
+    // when window width is >= 320px
+    1000: {
+      slidesPerView: 3,
+      spaceBetween: 30
+    },
+    // when window width is >= 480px
+    640: {
+      slidesPerView: 2,
+		spaceBetween: 30,
+		},
+		300: {
+		slidesPerView: 'auto',
+			spaceBetween: 15,
+	}
+  },
   
 
     navigation: {
@@ -174,3 +189,20 @@ function copyToClipboard() {
   document.execCommand('copy');
   document.body.removeChild(el);
 }
+
+let thirdLine = document.getElementById("thirdLine");
+let fourLine = document.getElementById('fourLine');
+let show = document.getElementById("watchLink");
+
+show.addEventListener("click", () => {
+	thirdLine.style.display = "flex";
+	fourLine.style.display = "flex";
+	show.style.display = "none";
+})
+
+let showFears = document.getElementById('fearsWatch');
+let fearsInfo = document.getElementById('fearsInfo');
+
+showFears.addEventListener('click', () => {
+	fearsInfo.style.display = 'block';
+})
